@@ -24,7 +24,7 @@ public class ArrayList_HYR_1 {
         System.out.println(al1);  // Output: [1, 2]
         System.out.println("Size: " + al1.size());  // Output: Size: 2
         // In ArrayList, there is no method to directly see the capacity,
-        // but after adding the first element, it becomes 10. This can be verified by debugging.
+        // but we can see the capacity after adding the first element, it becomes 10. This can be verified by debugging.
 
         // Adding more elements
         al1.add(3);
