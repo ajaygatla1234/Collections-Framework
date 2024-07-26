@@ -54,6 +54,9 @@ public class Stack_Practice {
 		//to get the index we can use
 		System.out.println(books1.indexOf("Yellow"));
 
+		//Since Stack uses Vector which in turn uses Arrays DS, Random Access is Possible.
+		System.out.println("Retrieve : "+books1.get(2));
+
 
 		System.out.println(books1.peek());   //Just returns the top element
 		System.out.println(books1);
