@@ -23,6 +23,7 @@ public class LinkedList_1 {
 		lL.add("Y1");
 		lL.add("Y2");
 		lL.add(0,"Y0");   //adding head
+		lL.add(3, "Y3");
 
 		System.out.println(lL);  //Note: The output will be in array form, but it has no relation to arrays. It's just a representation.
 
