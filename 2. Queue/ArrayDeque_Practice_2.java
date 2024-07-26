@@ -30,7 +30,8 @@ public class ArrayDeque_Practice_2 {
 		System.out.println(ad.peek()); //calls peekFirst() by default
 		System.out.println(ad.peekFirst());
 		System.out.println(ad.peekLast());
-		
+
+		//Random Access is not Possible. (if we want random access we use LinkedList)
 		
 		//Removal
 		System.out.println(ad.poll());
