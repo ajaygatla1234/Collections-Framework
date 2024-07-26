@@ -1,0 +1,44 @@
+4. LinkedList:
+-Stores data in the form of nodes.
+-Unlike other classes under the List, The LinkedList implements two interfaces, One is Obviously List and other is Deque. so it can use the functionalities from both interfaces.
+-It doesn't follow Arrays Data structure.
+-It follows Objects concept and Internally, the LinkedList is implemented using the doubly linked list data structure.
+-A LinkedList is a data structure that consists of a sequence of elements(Objects), each containing a reference (or link) to the next element in the sequence.
+
+Use cases:
+Frequent insertions or deletions.
+Don’t rely heavily on random access.
+
+
+Important points to remember:
+
+1. What is the default capacity? (Capacity when elements are not added to the list) : 0
+
+2. What is the initial capacity?  : 0 (just increases the size with insertion)
+
+3. Does it allow duplicate elements?  : Yes
+
+4. Does it allow null values?         : Yes
+
+5. Does it maintain the insertion order?  : Yes
+
+6. Does it maintain the sorted order?   : No
+
+7. Does it offer the random access of elements?  : Yes
+
+8. Is it synchronised?  : No (But we can make it synchronised by using Collections.synchronizedList(LinkedList) method)
+
+9. What is it good at?  : For Data Manipulations (insertion & deletions at middle, because only 3 operations will be performed Object creation(for insertion), updating previous & next References)
+
+Preferable When:
+-Use LinkedList when you prioritize efficient insertions/deletions and don’t mind slower random access.
+
+Advantages:
+-LinkedList is faster in manipulations.(Insertion & Deletion)
+-You need to traverse the LinkedList to find the correct position for insertion or deletion. (When compared to ArrayList, using this traversal is preferable, instead of Shifting all the elements)
+
+Disadvantaged:
+-LinkedList is slow in Retrieving (slow Sequential access and slow random access)
+-Slow random access : To access an element, you must traverse the list from the beginning, which can be inefficient.
+-Linked lists use more memory per element compared to arrays because each node stores both data and a reference to the next node.
+
