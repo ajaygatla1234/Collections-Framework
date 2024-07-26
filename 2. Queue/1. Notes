@@ -1,0 +1,88 @@
+2. Queue: ||
+============
+-FIFO concept
+
+1.Priority Queue:
+-Priority Queue is a data structure in which elements are ordered by priority, with the highest-priority elements appearing at the front of the queue.
+
+-It uses combination of array & binary heap data structure. (A binary heap is a complete binary tree)
+-The binary heap ensures that the highest (or lowest) priority element is always at the root, which allows for efficient retrieval and removal of the element with the highest priority.
+
+-PriorityQueue does not follow insertion order. Instead, it orders its elements based on their priority
+
+-Incase of integers, the Lowest Integer element will have the Highest Priority
+Ex: if we pass 5,8,2,9,10 -> then the highest priority is given to 2 & 2 will be the head.
+
+-for every element added, It will check the priority and places the element at right place.
+-In above example 
+if we add 5 -> 5 is head
+if we add 8 after 5 -> 5 is head
+if we add 2 after 8 -> 2 is head
+
+Note: It will not be in sorted order, but only highest priority will be head.
+
+Note: Insertion takes place at Tail & Removal takes place from Head.
+(One way Manipulation)
+
+Important points to remember:
+
+1. What is the default capacity? (Capacity when elements are not added to the list) : 11
+
+2. What is the initial capacity?  : 11 
+
+3. Does it allow duplicate elements?  : Yes
+
+4. Does it allow null values?         : No
+
+5. Does it maintain the insertion order?  : No (elements are ordered based on their natural ordering or by a comparator provided at queue construction time(based on the priority))
+
+6. Does it maintain the sorted order?   : yes (elements are sorted according to their priority)
+
+7. Does it offer the random access of elements?  : No
+
+8. Is it synchronised?  : No (But we can make it synchronised by using Collections.synchronizedList() method)
+
+9. What is it good at?  : Efficiently handling priority-based operations, where elements are processed based on their priority rather than their insertion order.
+
+Ex of Real time Implementation:
+IRCTC Website : Where Gender & Age are Priority Factors females & Senior Citizens are Given Priorities.
+In waiting List, for example if two members are there one is Male of 25 years and Female of 25 years.
+
+Deque(double-ended queue) : is the interface 
+------------------------------------------------------------------------
+2.ArrayDeque:
+(Two way manipulations)
+-Unlike Queues, ArrayDeque can Insert & Remove elements from both the sides(head and tail) 
+-ArrayDeque uses Arrays as its internal Data Structure. So that we can add in both ways.
+
+
+Important points to remember:
+
+1. What is the default capacity? (Capacity when elements are not added to the list) : 17
+
+2. What is the initial capacity?  : 17
+
+3. Does it allow duplicate elements?  : Yes
+
+4. Does it allow null values?         : No
+
+5. Does it maintain the insertion order?  : Yes
+
+6. Does it maintain the sorted order?   : No
+
+7. Does it offer the random access of elements?  : No
+
+8. Is it synchronised?  : No (But we can make it synchronised by using Collections.synchronizedList() method)
+
+9. What is it good at?  : Efficient double-ended queue operations (insertion and removal from both ends) and can be used as a stack or queue.
+
+
+Extra:
+-Since LinkedList also implements Deque, Two way manipulations can also be achieved through linked list.
+-the difference is ArrayDeque uses Arrays DS & LinkedList used Doubly LinkedList & Since LinkedList store data in the form of Nodes memory consumption will be more when compared to arrays.
+
+Difference between LinkedList & ArrayDeque:
+-LinkedList is use if more number of insertions & Deletions are Required. Allows Null & Duplicate. we can use index for Retrieve.
+-ArrayDeque is used where we need to perform more Random Access. since arrays provides faster Random Access. Allows Duplicate but not nulls.
+ only head & tail can be Retrieved.
+-Based on the requirements we can choose.
