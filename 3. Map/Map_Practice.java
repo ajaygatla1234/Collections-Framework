@@ -7,7 +7,7 @@ public class Map_Practice {
 
 	public static void main(String[] args) {
 
-		Map<Integer,String> m = new Hashtable<>(); //can use HashMap,TreeMap & LinkedHashMap instead of Hashtable. Difference lies in internal functionalitty
+		Map<Integer,String> m = new Hashtable<>(); //can use HashMap,TreeMap & LinkedHashMap instead of Hashtable. Difference lies in internal functionalitty & output
 
 		m.put(101, "Hyderabad");
 		m.put(102, "Chennai");
