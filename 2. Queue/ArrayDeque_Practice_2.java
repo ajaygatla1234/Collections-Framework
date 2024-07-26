@@ -31,7 +31,7 @@ public class ArrayDeque_Practice_2 {
 		System.out.println(ad.peekFirst());
 		System.out.println(ad.peekLast());
 
-		//Random Access is not Possible. (if we want random access we use LinkedList)
+		//Random Access is not Possible. (if we want random access, use LinkedList)
 		
 		//Removal
 		System.out.println(ad.poll());
