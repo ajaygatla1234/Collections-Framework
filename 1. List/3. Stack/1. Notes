@@ -1,0 +1,31 @@
+3. Stack:
+-Stack doesn't have any Separate Implementation
+-It uses Vector Implementation (Dynamic Array) as it extends to Vector.
+-I only provides some Additional Functionalities (Special methods)
+-It is also a Legacy Class
+
+
+Extra:
+-Imagine Stack as Vertical Array, since stack follows LIFO, 0 index should be always at the bottom & Array gets increased on the top side.
+-In a stack, the removal and insertion of elements take place at the top of the stack,
+
+Important points to remember:
+
+1. What is the default capacity? (Capacity when elements are not added to the list) : 10  (Since it follows Vector)
+
+2. What is the initial capacity?  : 10
+
+3. Does it allow duplicate elements?  : Yes
+
+4. Does it allow null values?         : Yes
+
+5. Does it maintain the insertion order?  : Yes
+
+6. Does it maintain the sorted order?   : No
+
+7. Does it offer the random access of elements?  : Yes 
+(But we should not use it, because Stack follows LIFO, we have to use only push, pop, peek and search, if we use random access, then we can create vector instead of Stack, what is the use of Creating Stack then)
+
+8. Is it synchronised?  : Yes (Since vector is synchronized)
+
+9. What is it good at?  : where scenarios lie LIFO comes. Ex: Undo, redo in word, back and forward in browser
