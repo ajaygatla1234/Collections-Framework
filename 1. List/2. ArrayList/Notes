@@ -1,0 +1,79 @@
+2. ArrayList:
+-ArrayList uses dynamic arrays as its underlying data structure.
+-The array size is increased by approximately 50% when it needs to grow.
+
+Use cases:
+Frequent random access by index.
+Few insertions or deletions.
+
+Important points to remember:
+
+1. What is the default capacity? (Capacity when elements are not added to the list) : 0
+(In Java 8 and later, the default capacity of an ArrayList(when created) is effectively 0 until you add the first element. This change was made to optimize memory usage. When you create an ArrayList with the default constructor, it doesn’t allocate any memory for elements until you actually add one. Once you add the first element, the capacity is set to 10.
+This approach, known as lazy initialization, helps to save memory by avoiding unnecessary allocation when the list is empty.)
+
+2. What is the initial capacity?  : 10
+
+3. Does it allow duplicate elements?  : Yes
+
+4. Does it allow null values?         : Yes
+
+5. Does it maintain the insertion order?  : Yes
+
+6. Does it maintain the sorted order?   : No
+
+7. Does it offer the random access of elements?  : Yes
+
+8. Is it synchronised?  : No (But we can make it synchronised by using Collections.synchronizedList(arrayList) method)
+
+9. What is it good at?  : where Data is not increased exponentially(if we use ArrayList for exponentially increasing data, then multiple arrays gets created and destroyed, which slower the performances)
+
+Preferred When:
+1.Frequent Access by Index: 
+  -Fast Sequential Access & fast Random Access
+2.Low Frequency of Insertions/Deletions:
+  -ArrayList can handle insertions and deletions, they can be expensive (O(n) complexity) as elements may need to be shifted.
+  -Frequently use only when last element need to be added.
+3.Memory Efficiency: less when compared to vector & LinkedList
+4.Searching for Elements: will be O(n) due to linear search.
+
+
+
+Advantages:
+-ArrayList is good for it because we can Store where directly add the element at specific index and get using index.
+-Faster performance when compare to Vector as no synchronization
+-Also uses less memory when compared to Vector with only 50% of increase in size.
+-It is not synchronised, so not thread safe, But we can make it synchronised by using Collections.synchronizedList(arrayList) method.
+
+Disadvantages:
+-Data Manipulations  like insertion in the middle(if we insert one element, all the next elements have to shift one step forward), deleting the middle(if we delete one element, all the next elements have to shift one step back)
+
+Replacing ArrayList with LinkedList:
+-If data Manipulations are the Primary Aspect we can use LinkedList.
+-For Data Manipulations (insertion & deletions at middle, because only 3 operations will be performed Object creation(for insertion), updating previous & next References)
+
+
+Extra:
+1.Slower than arrays: 
+-ArrayList is slower than arrays for certain operations, such as inserting elements in the middle of the list.
+2.Increased memory usage: 
+-ArrayList requires more memory than arrays, as it needs to maintain its dynamic size and handle resizing.
+
+Important Points of Array List in Java:
+-ArrayList inherits AbstractList class and implements the List interface.
+
+Constructors:
+1. ArrayList()
+This constructor is used to build an empty array list. If we wish to create an empty ArrayList with the name arr, then, it can be created as:
+
+ArrayList arr = new ArrayList(); 
+
+2. ArrayList(Collection c)
+This constructor is used to build an array list initialized with the elements from the collection c. Suppose, we wish to create an ArrayList arr which contains the elements present in the collection c, then, it can be created as: 
+
+ArrayList arr = new ArrayList(c);  
+
+3. ArrayList(int capacity)
+This constructor is used to build an array list with the initial capacity being specified. Suppose we wish to create an ArrayList with the initial size being N, then, it can be created as:
+
+ArrayList arr = new ArrayList(N);
