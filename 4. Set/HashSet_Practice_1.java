@@ -36,7 +36,7 @@ public class HashSet_Practice_1 {
 		
 		
 		//Removal//
-		//we have to pass data not the index
+		//what we pass in remove is data not the index, since HashMap has only fixed size of 16, if we pass index whole data in linked list we be lost.
 		System.out.println(hs.remove(10)); //will give true & removes the data
 		
 		System.out.println(hs);
