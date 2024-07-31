@@ -1,0 +1,232 @@
+Enumeration, Iterator & ListIterator:
+-These are the Interfaces used to Iterate over the Collection's.
+
+Enumeration:
+-Used to Iterating the Legacy Collection Objects.
+-It can only perform forward iteration (Read-Only Operation)
+-No Data Manipulations can be performed
+
+Iterator:
+-Enumeration is only for Legacy Collections, but Iterator if for both Legacy & New Collections.(or all collection objects)
+-It can only perform forward iteration
+-Read-Only & special permission for removing.
+
+ListIterator:
+-only used for List type of Collection Objects.
+-Its supports Bidirectional iteration
+-it can perform read & write operation.
+
+================================================================================================
+Extra info:||
+-------------
+
+Iterable interface:
+-The Iterable interface in Java has only one method, which is the iterator() method. (Iterator<T> iterator();)
+-Implementing the Iterable interface allows an object to be used in an enhanced for loop (foreach loop). This simplifies the syntax for iterating over a collection.
+
+for (T element : iterable) {
+    // process element
+}
+
+-The default implementation of forEach internally uses an iterator to traverse the elements of the Iterable and applies the specified action to each element.
+-When you use the enhanced for loop with an object that implements Iterable, the loop internally calls the object's iterator() method to obtain an iterator.
+-This method returns an Iterator object that can be used to iterate over the elements of the Iterable collection. 
+-The Iterator object provides methods such as hasNext() and next() to traverse the collection.
+
+Extra:
+when we use for each loop to print array values, will the iterator() will be called?
+-No, when you use a for-each loop to iterate over an array in Java, the iterator() method is not called. The for-each loop is designed specifically for iterating over arrays and collections, and it does not use the iterator() method like it does with objects that implement the Iterable interface.
+
+where for each resides ?
+The for-each loop in Java is a language feature, so it is not contained within a specific class or package. Instead, it is a syntax feature that is integrated into the Java language itself. 
+
+
+Underlying Mechanism:
+
+Arrays: When you use a for-each loop with an array, the Java compiler translates it into code that uses the array's length and indices to access each element.
+
+Collections: When you use a for-each loop with a collection, the compiler generates code that uses the collection's iterator() method to obtain an Iterator, which is then used to iterate over the elements.
+-------------------------------------------------------------------------------------------
+
+Iterator Interface:
+-The Iterator interface in Java does not have a direct super interface or superclass. It is a standalone interface that is part of the Java Collections Framework and is used for iterating over a collection of elements.
+-Allows user to visit(traverse through) the elements in the container one by one. .i.e. it allows to retrieve the elements of collection variable in forward direction but not in backward.
+-Iterator can be available to all the collection classes.
+
+It contains three primary methods
+-hasNext(): Returns true if there are more elements to iterate over.
+-next(): Returns the next element in the iteration.
+-remove(): Removes the last element returned by the iterator (optional operation).
+
+-A class that implements Iterable must provide an implementation of the iterator() method, which returns an Iterator. because iterator() is present in Iterable interface.
+
+public interface Iterable<T> {
+    Iterator<T> iterator();
+}
+
+-A class that implements Iterator must provide implementations for the hasNext(), next(), and optionally remove() methods. This is done in all the classes of collection framework like Itr class implements to Iterator to use those 3 methods in ArrayList.
+
+Extra:
+-Implementing Iterable allows a class to be used in enhanced for loops, while Iterator is used to perform the actual iteration logic.
+-In Java, the Iterable interface is used to represent a collection of elements that can be iterated over, while the Iterator interface provides a way to iterate over the elements of the collection. By implementing these interfaces, classes can be made iterable, allowing for easy iteration over their elements.
+
+-We can either use iterator method or enhanced for loop to iterate over the list.
+
+Ex:
+Iterator<Employee> empItr = employees.iterator();
+while (empItr.hasNext()) {
+    Employee e = empItr.next();
+    System.out.println(e);
+}
+The iterator() method is called on the employee's collection, which is likely a List<Employee> or another Collection<Employee>.
+This method returns an Iterator<Employee>, which can be used to traverse the collection.
+-Initialization: When employees.iterator() is called, an Iterator object is created. This object keeps track of the current position in the collection.
+
+-The lines Iterator<Employee> empItr = employees.iterator(); and Iterator<Employee> empItr = new ArrayList<Employee>().iterator(); are similar in that they both obtain an iterator for a collection of Employee objects. However, they are not the same and have different contexts and purposes.
+
+employees.iterator(): Works on an existing collection of employees that may contain elements.
+new ArrayList<Employee>().iterator(): Creates a new, empty collection and gets an iterator for it.
+
+-------------------------------------------------------------------------------------------
+Internal Functioning of Iterator:
+-Iterator can be available to all the collection classes through iterator() method that returns Iterator object. Like
+this is the method present in ArrayList
+
+	public Iterator<E> iterator() {
+        	return new Itr();
+	}
+
+-When we create
+	Iterator<Integer> obj = list.iterator(); 
+the iterator() above will return object of Itr class. Itr class is the Internal private class present inside ArrayList class that implements to Iterator Interface and this class provides the implementation of abstract methods present in Iterator Interface. For hasNext(), next() and remove().
+
+-It is similar to creating 
+ Iterator<E> obj = new Itr(); 
+
+-so obj is the object that can access the methods of Itr class.
+-so by using hasNext(), next() we can Traverse through the 
+
+here's the relevant part of the iterator() method from the Oracle documentation for the ArrayList class:
+
+public class ArrayList<E> extends AbstractList<E>
+    implements List<E>, RandomAccess, Cloneable, java.io.Serializable {
+    
+    // Other methods and fields...
+
+    public Iterator<E> iterator() {
+        return new Itr();
+    }
+
+    // Other internal classes and methods...
+
+    private class Itr implements Iterator<E> {
+        int cursor;       // index of next element to return
+        int lastRet = -1; // index of last element returned; -1 if no such
+
+        public boolean hasNext() {
+            return cursor != size();
+        }
+
+        public E next() {
+            int i = cursor;
+            if (i >= size())
+                throw new NoSuchElementException();
+            Object[] elementData = ArrayList.this.elementData;
+            cursor = i + 1;
+            return (E) elementData[lastRet = i];
+        }
+
+        public void remove() {
+            if (lastRet < 0)
+                throw new IllegalStateException();
+            ArrayList.this.remove(lastRet);
+            cursor = lastRet;
+            lastRet = -1;
+        }
+    }
+}
+-------------------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------------------
+Draw back of for each loop:
+-Manipulation of elements during iteration is not possible.
+
+ConcurrentModificationException:
+
+imagine you have a list of items in your kitchen, and you want to count them. You start counting, but while you're counting, someone else adds or removes items from the list without telling you. This can lead to confusion because the list is changing while you're counting it.
+
+In Java terms:
+
+List<String> kitchenItems = new ArrayList<>();
+kitchenItems.add("Apple");
+kitchenItems.add("Banana");
+kitchenItems.add("Orange");
+
+// Trying to count the items in the kitchen
+int count = 0;
+for (String item : kitchenItems) {
+    count++; // Counting items
+    // Imagine someone removes an item here from the kitchenItems list
+    // kitchenItems.remove("Banana"); // This line will cause ConcurrentModificationException
+}
+
+System.out.println("Total items: " + count);
+
+In this example, if someone removes an item from kitchenItems while you're counting them using a for-each loop, it can cause a ConcurrentModificationException. This is because you're modifying the list while iterating over it, which is not allowed in Java without proper synchronization or using appropriate iterator methods.
+
+how it can avoid the error using Iterator:
+
+Using an Iterator properly can help avoid the ConcurrentModificationException because iterators are designed to handle modifications to a collection while iterating. Here's how you can modify the previous example to use an Iterator:
+
+
+List<String> kitchenItems = new ArrayList<>();
+kitchenItems.add("Apple");
+kitchenItems.add("Banana");
+kitchenItems.add("Orange");
+
+// Using an Iterator to count items
+int count = 0;
+Iterator<String> iterator = kitchenItems.iterator();
+while (iterator.hasNext()) {
+    String item = iterator.next();
+    count++; // Counting items
+    // Imagine someone removes an item here from the kitchenItems list
+    // iterator.remove(); // This line would not cause ConcurrentModificationException
+}
+
+System.out.println("Total items: " + count);
+
+In this modified example, we use an Iterator explicitly (Iterator<String> iterator = kitchenItems.iterator();) to iterate over the kitchenItems list. Inside the loop, we use iterator.next() to get the next item and iterator.remove() to remove an item if needed. This way, if modifications are made to the list while iterating, the Iterator handles these modifications safely and avoids the ConcurrentModificationException.
+
+The key is to use the Iterator's methods (next(), remove()) for modifications instead of directly modifying the list (kitchenItems) while iterating.
+-------------------------------------------------------------------------------------------
+if i want to remove only one particular index object, then how it works
+
+If you want to remove a specific element at a particular index while iterating using an Iterator, you can achieve this using the remove() method of the Iterator. Here's an example:
+
+List<String> fruits = new ArrayList<>();
+fruits.add("Apple");
+fruits.add("Banana");
+fruits.add("Orange");
+
+// Using an Iterator to remove a specific element
+Iterator<String> iterator = fruits.iterator();
+int indexToRemove = 1; // Index of the element to remove
+int currentIndex = 0; // Current index while iterating
+
+while (iterator.hasNext()) {
+    String fruit = iterator.next();
+    if (currentIndex == indexToRemove) {
+        iterator.remove(); // Remove the element at the specified index
+        System.out.println("Removed: " + fruit);
+    }
+    currentIndex++;
+}
+
+System.out.println("Remaining fruits: " + fruits);
+
+In this example, we use an Iterator to iterate over the fruits list. We specify the index (indexToRemove) of the element we want to remove. Inside the loop, we check if the current index matches the index to remove. If they match, we use iterator.remove() to remove that element from the list. This way, you can remove a specific element at a particular index while iterating using an Iterator without encountering a ConcurrentModificationException.
+
+Output:
+Removed: Banana
+Remaining fruits: [Apple, Orange]
