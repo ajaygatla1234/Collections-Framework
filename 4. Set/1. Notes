@@ -1,0 +1,94 @@
+SET: ||
+-------
+-Mainly introduced for the collection by Restricting the Duplicates.
+-Which does not allow duplicate elements.
+-It will store only Unique elements.
+-Updation concept will not be there
+
+1.HashSet
+-uses Hashing Technique as data structure
+- HashSet uses HashMap as DS -> HashMap uses Array of Nodes(Key, value)
+
+why we use Hashing concept in Set?
+-Because we created Set so that it will not allow duplicates.
+-So already we had a Hashing concept to handle it by making keys as Unique, so instead of creating new DS we are using Hashing in it. by using keys as set.
+
+Set uses HashMap as internal DS but why set accepts only one Argument.
+-The Element which we pass will be considered as Key & in place of values, a dummy object is created. //new Object();
+
+can we add null value in set?
+HashSet & LinkedHashSet will allow the Null values, but TreeSet will not allow.
+
+
+Important points to remember:
+
+1. What is the default capacity? (Capacity when elements are not added to the list) : 16
+
+2. What is the initial capacity?  : 16
+
+3. Does it allow duplicate elements?  : No
+
+4. Does it allow null values?         : Yes
+
+5. Does it maintain the insertion order?  : No
+
+6. Does it maintain the sorted order?   : No
+
+7. Does it offer the random access of elements?  : No (HashMap does not offer random access. Retrieving an element involves computing the hash code and potentially traversing a linked list. Even get(key) follows the same process)
+
+
+8. Is it synchronised?  : No (But we can make it synchronised by using Collections.synchronizedSet() method)
+
+9. What is it good at?  : 
+-It is ideal for scenarios where the uniqueness of elements and quick operations are more critical than the order of elements.
+------------------------------------------------------------------------
+2.LinkedHashSet:
+-The LinkedHashSet in Java uses a combination of a HashMap and a doubly-linked list to maintain its elements. 
+-Each entry in the HashMap contains a reference to a node in this linked list.
+
+Important points to remember:
+
+1. What is the default capacity? (Capacity when elements are not added to the list) : 16
+
+2. What is the initial capacity?  : 16
+
+3. Does it allow duplicate elements?  : No
+
+4. Does it allow null values?         : Yes
+
+5. Does it maintain the insertion order?  : Yes
+
+6. Does it maintain the sorted order?   : No
+
+7. Does it offer the random access of elements?  : No (HashMap does not offer random access. Retrieving an element involves computing the hash code and potentially traversing a linked list. Even get(key) follows the same process)
+
+
+8. Is it synchronised?  : No (But we can make it synchronised by using Collections.synchronizedSet() method)
+
+9. What is it good at?  : 
+-It is ideal for scenarios where you need to maintain the order of elements as they were inserted and require quick access, insertion, and deletion operations.
+
+------------------------------------------------------------------------
+3.TreeSet
+-The primary data structure used by TreeSet is a TreeMap. The TreeMap is a Red-Black Tree, a type of self-balancing binary search tree. This ensures that the elements are stored in a sorted order and provides efficient access, insertion, and deletion operations.
+
+Important points to remember:
+
+1. What is the default capacity? (Capacity when elements are not added to the list) : Not applicable (TreeSet is based on a tree structure).
+
+2. What is the initial capacity?  : Not applicable.
+
+3. Does it allow duplicate elements?  : No
+
+4. Does it allow null values?         : No
+
+5. Does it maintain the insertion order?  : No
+
+6. Does it maintain the sorted order?   : Yes
+
+7. Does it offer the random access of elements?  : No (Random access is not directly supported in TreeMap as it is designed for sorted access. To access an element, you need to search through the tree structure)
+
+8. Is it synchronised?  : No (But we can make it synchronised by using Collections.synchronizedSortedSet() method)
+
+9. What is it good at?  : 
+-It is ideal for scenarios where you need to store elements in a sorted order and perform range operations (like finding subsets within a range).
