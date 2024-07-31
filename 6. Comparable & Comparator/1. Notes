@@ -1,0 +1,40 @@
+1.Comparable:
+
+- used to compare objects based on Single type of ordering.
+-Comparable is an interface in Java that is used to define a natural ordering of objects.
+-It is found in the java.lang package.
+-When a class implements the Comparable interface, it indicates that instances of that class can be compared to each other and sorted based on their natural order.
+-The compareTo() method compares the current object (this) with the specified object (o) and returns an integer value:
+1. Returns a negative integer if this object is less than o.
+2. Returns zero if this object is equal to o.
+3. Returns a positive integer if this object is greater than o.
+
+-To make a class comparable, you need to implement the Comparable interface and provide an implementation for the compareTo() method based on the natural ordering of objects of that class.
+
+Using Comparable with Collections for Natural ordering:
+-The Comparable interface is commonly used with sorting algorithms and data structures in Java. For example:
+-Collections.sort(list) uses the natural ordering defined by Comparable to sort a list.
+-TreeSet and TreeMap use Comparable for ordering elements in the set or map.
+-The sort() method present in Collections class uses Timsort Algorith for Sorting.(Tim Sort is a hybrid sorting algorithm derived from merge sort and insertion sort.)
+
+Disadvantage:
+-we can only perfrom sorting based on single attribute using comparable
+-When a class implements Comparable, it defines a single way of sorting its instances.
+-This means that when you implement the Comparable interface and override the compareTo method, you are defining a single way to compare objects, typically based on a single attribute
+
+----------------------------------------------------------------------------------------------------
+
+2.Comparator:
+
+- used to compare objects based on Multiple types of ordering.
+-In Java, a Comparator is an interface used to define a custom ordering for objects.
+-Unlike the Comparable, Comparator interface allows you to create multiple ways to compare objects, which can be particularly useful when you need different orderings for the same type of object.
+-we can declare multiple classes which implements Comparator interface and in every class we can write One logic for a Particular type of orderings.
+-The Comparator interface is defined in the java.util package.
+
+While they both deal with object comparison, they serve different purposes:
+1.Comparable is implemented by a class to define its natural ordering.
+2.Comparator is used to define comparison logic externally, allowing for multiple ways to sort objects of a class.
+
+Extra:
+-Both are Functional Interfaces.
