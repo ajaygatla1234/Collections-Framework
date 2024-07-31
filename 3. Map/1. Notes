@@ -1,0 +1,126 @@
+3. Map: ||
+==========
+
+Before Learning Map, Go through Hashing Concept in Data Structure.
+
+-The primary purpose of a Map is to store pairs of keys and values, where each key is unique and maps to exactly one value.
+-one pair is called as one Entry.
+
+Internal Structure of HashTable
+Internally HashMap contains an array of Node and a node is represented as a class that contains 4 fields: 
+
+int hash
+K key
+V value
+Node next
+It can be seen that the node is containing a reference to its own object. So it’s a linked list. 
+
+
+1. HashTable:
+-HashTable uses hash table as its Underlying Data structure where arrys are used.
+
+Extra:
+-HashTable doesn't resize or increase dynamically, because of the HashTable uses chaining to handle collisions.This means that each bucket is a linked list (or another data structure), and colliding elements are stored in the list at the appropriate bucket index.
+
+Important points to remember:
+
+1. What is the default capacity? (Capacity when elements are not added to the list) : 11
+
+2. What is the initial capacity?  : 11
+
+3. Does it allow duplicate elements?  : No
+
+4. Does it allow null values?         : No (Both keys & values)
+
+5. Does it maintain the insertion order?  : No
+
+6. Does it maintain the sorted order?   : No
+
+7. Does it offer the random access of elements?  : No (Retrieving a value from a Hashtable involves computing the hash code, finding the appropriate bucket, and searching within that bucket. Even get(key) follows the same process)
+
+8. Is it synchronised?  : Yes 
+
+9. What is it good at?  : (Hashtable is useful for implementing a thread-safe, key-value mapping with guaranteed constant-time performance for basic operations, such as adding, removing, and checking for the existence of elements.)
+------------------------------------------------------------------------
+2. HashMap:
+-Underlying Data Structure: HashMap uses a hash table as its underlying data structure, where an array of buckets is used. Each bucket can hold a linked list of entries that have the same hash code.
+
+Important points to remember:
+
+1. What is the default capacity? (Capacity when elements are not added to the list) : 16
+
+2. What is the initial capacity?  : 16
+
+3. Does it allow duplicate elements?  : No
+
+4. Does it allow null values?         : Yes (Both keys & Values)
+
+5. Does it maintain the insertion order?  : No
+
+6. Does it maintain the sorted order?   : No
+
+7. Does it offer the random access of elements?  : No (HashMap does not offer random access. Retrieving an element involves computing the hash code and potentially traversing a linked list.Even get(key) follows the same process)
+
+
+8. Is it synchronised?  : No (But we can make it synchronised by using Collections.synchronizedMap() method)
+
+9. What is it good at?  :  It is well-suited for cases where order is not important, and fast lookups are desired.
+-Use HashMap for non-threaded applications and flexibility.
+------------------------------------------------------------------------
+3. LinkedHashMap:
+-Underlying Data Structure: LinkedHashMap uses a hash table as its primary data structure, combined with a doubly-linked list to maintain the order of insertion.
+
+-It does use a hash table internally (specifically, it extends HashMap), which employs an array of buckets where each bucket handles hash collisions using singly-linked lists.
+-Additionally, LinkedHashMap maintains the insertion order using a doubly-linked list. This doubly-linked list is used to keep track of the order in which entries were added to the map.
+
+Internal Structure of LinkedHashMap:
+Hash Table: For quick lookups, which uses an array of buckets with singly-linked lists for collision resolution.
+Doubly-Linked List: To maintain the order of elements based on their insertion order. This list is separate from the hash table and is used specifically for maintaining insertion order.
+
+-So, LinkedHashMap combines the features of a hash table (for fast access) and a doubly-linked list (for maintaining insertion order).
+
+
+Important points to remember:
+
+1. What is the default capacity? (Capacity when elements are not added to the list) : 16
+
+2. What is the initial capacity?  : 16
+
+3. Does it allow duplicate elements?  : No
+
+4. Does it allow null values?         : Yes
+
+5. Does it maintain the insertion order?  : Yes
+
+6. Does it maintain the sorted order?   : No
+
+7. Does it offer the random access of elements?  : No (LinkedHashMap does not offer true random access. Retrieving an element involves computing the hash code and traversing the linked list if needed.Even get(key) follows the same process)
+
+8. Is it synchronised?  : No (But we can make it synchronised by using Collections.synchronizedMap() method)
+
+9. What is it good at?  :
+-LinkedHashMap is useful for implementing key-value mappings where the order of insertion needs to be preserved. It provides predictable iteration order and is well-suited for cases where insertion order matters and fast lookups are required.
+------------------------------------------------------------------------
+4. TreeMap:
+-TreeMap uses a Red-Black tree as its underlying data structure. A Red-Black tree is a balanced binary search tree where elements are stored in a sorted order based on their natural ordering or by a specified comparator.
+
+Important points to remember:
+
+1. What is the default capacity? (Capacity when elements are not added to the list) : Not Applicable since it not an Array, its a Tree(Node based)
+
+2. What is the initial capacity?  : NA
+
+3. Does it allow duplicate elements?  : No
+
+4. Does it allow null values?         : No (values can be null but not keys)
+
+5. Does it maintain the insertion order?  : No
+
+6. Does it maintain the sorted order?   : Yes
+
+7. Does it offer the random access of elements?  : No (Random access is not directly supported in TreeMap as it is designed for sorted access. To access an element, you need to search through the tree structure)
+
+8. Is it synchronised?  : No (But we can make it synchronised by using Collections.synchronizedSortedMap() method)
+
+9. What is it good at?  :
+-TreeMap is useful for applications that require a sorted map where elements are ordered by their keys. 
